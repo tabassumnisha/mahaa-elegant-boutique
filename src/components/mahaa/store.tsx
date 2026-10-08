@@ -14,8 +14,8 @@ export function StoreProvider({children}:{children:ReactNode}){
  useEffect(()=>{if(!ready||loadedFor===null)return;cartRef.current=cart;if(!user){sessionStorage.setItem('mahaa-guest-bag',JSON.stringify(cart));return;}if(loadedFor!==user.id)return;supabase.from('customer_bags').upsert({user_id:user.id,cart,wishlist}).then(({error})=>{if(error)toast.error('Your shopping bag could not be saved.');});},[cart,wishlist,loadedFor,user?.id,ready]);
  const add=(id:string)=>{setCart(prev=>{const exists=prev.find(p=>p.id===id);return exists?prev.map(p=>p.id===id?{...p,quantity:Math.min(20,p.quantity+1)}:p):[...prev,{id,quantity:1}];});toast.success('Added to your shopping bag');};
  const quantity=(id:string,n:number)=>setCart(prev=>n<=0?prev.filter(p=>p.id!==id):prev.map(p=>p.id===id?{...p,quantity:Math.min(20,n)}:p));
- const wish=(id:string)=>{if(!user){toast('Sign in to save your wishlist');router.navigate({to:'/auth'});return;}setWishlist(prev=>prev.includes(id)?prev.filter(p=>p!==id):[...prev,id]);};
- const signOut=async()=>{await qc.cancelQueries();qc.clear();setCart([]);cartRef.current=[];setWishlist([]);sessionStorage.removeItem('mahaa-guest-bag');await supabase.auth.signOut();await router.navigate({to:'/auth',replace:true});};
+ const wish=(id:string)=>{if(!user){toast('Sign in to save your wishlist');router.navigate({to:'/auth',search:{next:undefined}});return;}setWishlist(prev=>prev.includes(id)?prev.filter(p=>p!==id):[...prev,id]);};
+ const signOut=async()=>{await qc.cancelQueries();qc.clear();setCart([]);cartRef.current=[];setWishlist([]);sessionStorage.removeItem('mahaa-guest-bag');await supabase.auth.signOut();await router.navigate({to:'/auth',search:{next:undefined},replace:true});};
  return <Context.Provider value={{user,ready,cart,wishlist,add,quantity,wish,clear:()=>setCart([]),signOut}}>{children}</Context.Provider>;
 }
 export function useStore(){const value=useContext(Context);if(!value)throw new Error('Store provider is missing');return value;}
