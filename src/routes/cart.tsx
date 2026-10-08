@@ -1,0 +1,8 @@
+import { createFileRoute,Link } from '@tanstack/react-router';
+import { X } from 'lucide-react';
+import { useStore } from '@/components/mahaa/store';
+import { products,money,pageHead } from '@/lib/catalog';
+import { Quantity } from '@/components/mahaa/products';
+import { Button } from '@/components/ui/button';
+export const Route=createFileRoute('/cart')({head:()=>pageHead('Your Shopping Bag','Review your MAHAA shopping bag and adjust quantities.'),component:Cart});
+function Cart(){const store=useStore();return <main className="wrap section"><span className="eyebrow">YOUR PERSONAL EDIT</span><h1 className="page-title">Your shopping bag</h1>{store.cart.length?<div className="max-w-3xl">{store.cart.map(i=>{const p=products.find(p=>p.id===i.id);return p?<div className="cart-row" key={i.id}><img src={p.image} alt={p.name}/><div><Link to="/product/$slug" params={{slug:p.id}}><h3>{p.name}</h3></Link><p>{money(p.price)}</p><Quantity value={i.quantity} onChange={n=>store.quantity(i.id,n)}/></div><Button variant="ghost" aria-label={`Remove ${p.name}`} onClick={()=>store.quantity(i.id,0)}><X size={17}/></Button></div>:null;})}<div className="cart-total"><span>Subtotal</span><span>{money(store.cart.reduce((n,i)=>n+(products.find(p=>p.id===i.id)?.price??0)*i.quantity,0))}</span></div><p className="notice">Delivery is calculated at checkout. This redesign saves concept orders only.</p><Button variant="luxury" asChild className="mt-5"><Link to="/checkout">Proceed to checkout →</Link></Button></div>:<div className="empty-state"><h2>A beautiful edit starts here.</h2><Button variant="luxury" asChild><Link to="/shop">Explore the collection</Link></Button></div>}</main>;}

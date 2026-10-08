@@ -1,24 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute,Link } from '@tanstack/react-router';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { products,pageHead } from '@/lib/catalog';
+import { BrandIntro,Collections,OutletSection,StoriesSection,SocialSection,TrustSection,outletImage } from '@/components/mahaa/editorial';
+import { ProductSlider } from '@/components/mahaa/products';
+import { Newsletter } from '@/components/mahaa/layout';
+export const Route=createFileRoute('/')({head:()=>pageHead('MAHAA | Your Fashion Style Destination','Explore elegant modest fashion, gowns, hijabs, abayas and niqabs from MAHAA, Natore, Bangladesh.'),component:Home});
+function Home(){return <main><section className="hero"><img src={outletImage} alt="MAHAA lilac modest-fashion ensemble at the Natore boutique" className="hero-photo" fetchPriority="high"/><div className="wrap hero-content fade-in"><span className="eyebrow">MODESTY MEETS MODERN ELEGANCE</span><h1>MAHAA</h1><p className="hero-tagline">YOUR FASHION STYLE DESTINATION</p><p className="hero-description">Elegant modest fashion designed<br/>to express your style.</p><div className="hero-actions"><Button variant="luxury" asChild><Link to="/collections">Explore collection <ArrowRight size={14}/></Link></Button><Button variant="editorial" asChild><Link to="/shop">Shop now</Link></Button></div></div><span className="hero-caption">THE ART OF MODEST DRESSING</span><div className="hero-bottom"><span>TIMELESS STYLE. BEAUTIFULLY MAHAA.</span><div className="hero-dots"><span/><span/><span/></div><Link to="/about">DISCOVER MORE ↓</Link></div></section><BrandIntro/><section className="section bg-muted"><div className="wrap"><div className="section-head"><div><span className="eyebrow">A STYLE FOR EVERY YOU</span><h2 className="section-title">Shop by collection</h2></div><Link to="/collections" className="text-link">Explore all <ArrowRight size={14}/></Link></div><Collections/></div></section><ProductSlider title="The latest collection" eyebrow="NEW TO YOUR WARDROBE" items={[...products].reverse()}/><ProductSlider title="The MAHAA edit" eyebrow="PIECES TO FALL IN LOVE WITH" items={products.slice(3)}/><section className="campaign"><img src={products[8]?.image} alt="A flowing lilac MAHAA gown" loading="lazy"/><div className="wrap campaign-content"><span className="eyebrow text-primary">THE ART OF EVERYDAY ELEGANCE</span><h2>Grace in every<br/>little detail.</h2><Button variant="luxury" asChild><Link to="/collections/$category" params={{category:'gown'}}>Discover the gown edit <ArrowRight size={14}/></Link></Button></div></section><OutletSection/><StoriesSection/><section className="section"><div className="wrap"><div className="intro"><span className="eyebrow">YOUR VOICE, OUR INSPIRATION</span><h2>Worn with love.<br/>Shared with honesty.</h2></div><div className="review-empty"><p>Every story here begins with a real MAHAA customer.</p><Button variant="outline" asChild><Link to="/reviews">Read & share reviews <ArrowRight size={14}/></Link></Button></div></div></section><SocialSection/><TrustSection/><Newsletter/></main>;}

@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791479541686,
+      "tag": "0000_mahaa_customer_store",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791479993003,
+      "tag": "0001_mahaa_review_photos_and_limits",
+      "breakpoints": true
+    }
+  ]
+}

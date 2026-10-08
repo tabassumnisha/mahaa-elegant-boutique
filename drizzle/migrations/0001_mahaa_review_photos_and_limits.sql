@@ -1,0 +1,16 @@
+REVOKE ALL ON FUNCTION public.create_mahaa_profile() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.mahaa_staff() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.mahaa_staff() TO authenticated, service_role;
+ALTER TABLE public.profiles ADD CONSTRAINT profile_name_size CHECK (length(display_name)<=100);
+ALTER TABLE public.profiles ADD CONSTRAINT profile_addresses_size CHECK (jsonb_typeof(addresses)='array' AND octet_length(addresses::text)<=10000);
+ALTER TABLE public.customer_bags ADD CONSTRAINT bag_size CHECK (jsonb_typeof(cart)='array' AND jsonb_typeof(wishlist)='array' AND octet_length(cart::text)<=30000 AND octet_length(wishlist::text)<=30000);
+CREATE FUNCTION public.limit_mahaa_reviews() RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path=public AS $$ BEGIN IF (SELECT count(*) FROM public.reviews WHERE user_id=NEW.user_id AND created_at>now()-interval '1 hour')>=5 THEN RAISE EXCEPTION 'Please wait before submitting another review.'; END IF; IF NEW.image_path IS NOT NULL AND NEW.image_path NOT LIKE NEW.user_id::text || '/%' THEN RAISE EXCEPTION 'Invalid review photo'; END IF; RETURN NEW; END; $$;
+REVOKE ALL ON FUNCTION public.limit_mahaa_reviews() FROM PUBLIC,anon,authenticated;
+CREATE TRIGGER mahaa_review_limit BEFORE INSERT ON public.reviews FOR EACH ROW EXECUTE FUNCTION public.limit_mahaa_reviews();
+CREATE POLICY "Upload own review photo" ON storage.objects FOR INSERT TO authenticated WITH CHECK(bucket_id='review-images' AND (storage.foldername(name))[1]=auth.uid()::text AND lower(storage.extension(name)) IN ('jpg','jpeg','png','webp'));
+CREATE POLICY "Read own review photo" ON storage.objects FOR SELECT TO authenticated USING(bucket_id='review-images' AND ((storage.foldername(name))[1]=auth.uid()::text OR public.mahaa_staff()));
+CREATE POLICY "Read approved review photo" ON storage.objects FOR SELECT TO anon,authenticated USING(bucket_id='review-images' AND EXISTS(SELECT 1 FROM public.reviews WHERE reviews.image_path=storage.objects.name AND reviews.status='approved'));
+CREATE POLICY "Remove own review photo" ON storage.objects FOR DELETE TO authenticated USING(bucket_id='review-images' AND (storage.foldername(name))[1]=auth.uid()::text);
+CREATE INDEX mahaa_reviews_status_created ON public.reviews(status,created_at DESC);
+CREATE INDEX mahaa_reviews_owner ON public.reviews(user_id);
+CREATE INDEX mahaa_orders_owner ON public.orders(user_id,created_at DESC);
