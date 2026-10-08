@@ -10,33 +10,416 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DeliveryPolicyRouteImport } from './routes/delivery-policy'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as OrderProcedureRouteImport } from './routes/order-procedure'
+import { Route as OutletRouteImport } from './routes/outlet'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ProductCareRouteImport } from './routes/product-care'
+import { Route as RefundInformationRouteImport } from './routes/refund-information'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ShippingInformationRouteImport } from './routes/shipping-information'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SizeGuideRouteImport } from './routes/size-guide'
+import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as WishlistRouteImport } from './routes/wishlist'
+import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
+import { Route as AuthenticatedModerationRouteImport } from './routes/_authenticated/moderation'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
+import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsRoute = CollectionsRouteImport.update({
+  id: '/collections',
+  path: '/collections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliveryPolicyRoute = DeliveryPolicyRouteImport.update({
+  id: '/delivery-policy',
+  path: '/delivery-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderProcedureRoute = OrderProcedureRouteImport.update({
+  id: '/order-procedure',
+  path: '/order-procedure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutletRoute = OutletRouteImport.update({
+  id: '/outlet',
+  path: '/outlet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductCareRoute = ProductCareRouteImport.update({
+  id: '/product-care',
+  path: '/product-care',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundInformationRoute = RefundInformationRouteImport.update({
+  id: '/refund-information',
+  path: '/refund-information',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnPolicyRoute = ReturnPolicyRouteImport.update({
+  id: '/return-policy',
+  path: '/return-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingInformationRoute = ShippingInformationRouteImport.update({
+  id: '/shipping-information',
+  path: '/shipping-information',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SizeGuideRoute = SizeGuideRouteImport.update({
+  id: '/size-guide',
+  path: '/size-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoriesRoute = StoriesRouteImport.update({
+  id: '/stories',
+  path: '/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackingRoute = TrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedModerationRoute = AuthenticatedModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CollectionsRoute,
+} as any)
+const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => CollectionsRoute,
+} as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/collections': typeof CollectionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/order-procedure': typeof OrderProcedureRoute
+  '/outlet': typeof OutletRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product-care': typeof ProductCareRoute
+  '/refund-information': typeof RefundInformationRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/shipping-information': typeof ShippingInformationRoute
+  '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
+  '/tracking': typeof TrackingRoute
+  '/wishlist': typeof WishlistRoute
+  '/account': typeof AuthenticatedAccountRoute
+  '/moderation': typeof AuthenticatedModerationRoute
+  '/collections/$category': typeof CollectionsCategoryRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/order-procedure': typeof OrderProcedureRoute
+  '/outlet': typeof OutletRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product-care': typeof ProductCareRoute
+  '/refund-information': typeof RefundInformationRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/shipping-information': typeof ShippingInformationRoute
+  '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
+  '/tracking': typeof TrackingRoute
+  '/wishlist': typeof WishlistRoute
+  '/account': typeof AuthenticatedAccountRoute
+  '/moderation': typeof AuthenticatedModerationRoute
+  '/collections/$category': typeof CollectionsCategoryRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/collections': typeof CollectionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/collections': typeof CollectionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/order-procedure': typeof OrderProcedureRoute
+  '/outlet': typeof OutletRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product-care': typeof ProductCareRoute
+  '/refund-information': typeof RefundInformationRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/shipping-information': typeof ShippingInformationRoute
+  '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
+  '/tracking': typeof TrackingRoute
+  '/wishlist': typeof WishlistRoute
+  '/_authenticated/account': typeof AuthenticatedAccountRoute
+  '/_authenticated/moderation': typeof AuthenticatedModerationRoute
+  '/collections/$category': typeof CollectionsCategoryRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/collections'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/help'
+    | '/order-procedure'
+    | '/outlet'
+    | '/privacy-policy'
+    | '/product-care'
+    | '/refund-information'
+    | '/reset-password'
+    | '/return-policy'
+    | '/reviews'
+    | '/shipping-information'
+    | '/shop'
+    | '/size-guide'
+    | '/stories'
+    | '/terms'
+    | '/tracking'
+    | '/wishlist'
+    | '/account'
+    | '/moderation'
+    | '/collections/$category'
+    | '/product/$slug'
+    | '/collections/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/help'
+    | '/order-procedure'
+    | '/outlet'
+    | '/privacy-policy'
+    | '/product-care'
+    | '/refund-information'
+    | '/reset-password'
+    | '/return-policy'
+    | '/reviews'
+    | '/shipping-information'
+    | '/shop'
+    | '/size-guide'
+    | '/stories'
+    | '/terms'
+    | '/tracking'
+    | '/wishlist'
+    | '/account'
+    | '/moderation'
+    | '/collections/$category'
+    | '/product/$slug'
+    | '/collections'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/about'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/collections'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/help'
+    | '/order-procedure'
+    | '/outlet'
+    | '/privacy-policy'
+    | '/product-care'
+    | '/refund-information'
+    | '/reset-password'
+    | '/return-policy'
+    | '/reviews'
+    | '/shipping-information'
+    | '/shop'
+    | '/size-guide'
+    | '/stories'
+    | '/terms'
+    | '/tracking'
+    | '/wishlist'
+    | '/_authenticated/account'
+    | '/_authenticated/moderation'
+    | '/collections/$category'
+    | '/product/$slug'
+    | '/collections/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  CollectionsRoute: typeof CollectionsRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  DeliveryPolicyRoute: typeof DeliveryPolicyRoute
+  FaqRoute: typeof FaqRoute
+  HelpRoute: typeof HelpRoute
+  OrderProcedureRoute: typeof OrderProcedureRoute
+  OutletRoute: typeof OutletRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ProductCareRoute: typeof ProductCareRoute
+  RefundInformationRoute: typeof RefundInformationRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  ReturnPolicyRoute: typeof ReturnPolicyRoute
+  ReviewsRoute: typeof ReviewsRoute
+  ShippingInformationRoute: typeof ShippingInformationRoute
+  ShopRoute: typeof ShopRoute
+  SizeGuideRoute: typeof SizeGuideRoute
+  StoriesRoute: typeof StoriesRoute
+  TermsRoute: typeof TermsRoute
+  TrackingRoute: typeof TrackingRoute
+  WishlistRoute: typeof WishlistRoute
+  ProductSlugRoute: typeof ProductSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +431,274 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections': {
+      id: '/collections'
+      path: '/collections'
+      fullPath: '/collections'
+      preLoaderRoute: typeof CollectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery-policy': {
+      id: '/delivery-policy'
+      path: '/delivery-policy'
+      fullPath: '/delivery-policy'
+      preLoaderRoute: typeof DeliveryPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-procedure': {
+      id: '/order-procedure'
+      path: '/order-procedure'
+      fullPath: '/order-procedure'
+      preLoaderRoute: typeof OrderProcedureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outlet': {
+      id: '/outlet'
+      path: '/outlet'
+      fullPath: '/outlet'
+      preLoaderRoute: typeof OutletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-care': {
+      id: '/product-care'
+      path: '/product-care'
+      fullPath: '/product-care'
+      preLoaderRoute: typeof ProductCareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-information': {
+      id: '/refund-information'
+      path: '/refund-information'
+      fullPath: '/refund-information'
+      preLoaderRoute: typeof RefundInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/return-policy': {
+      id: '/return-policy'
+      path: '/return-policy'
+      fullPath: '/return-policy'
+      preLoaderRoute: typeof ReturnPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping-information': {
+      id: '/shipping-information'
+      path: '/shipping-information'
+      fullPath: '/shipping-information'
+      preLoaderRoute: typeof ShippingInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/size-guide': {
+      id: '/size-guide'
+      path: '/size-guide'
+      fullPath: '/size-guide'
+      preLoaderRoute: typeof SizeGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stories': {
+      id: '/stories'
+      path: '/stories'
+      fullPath: '/stories'
+      preLoaderRoute: typeof StoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tracking': {
+      id: '/tracking'
+      path: '/tracking'
+      fullPath: '/tracking'
+      preLoaderRoute: typeof TrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/account': {
+      id: '/_authenticated/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AuthenticatedAccountRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/moderation': {
+      id: '/_authenticated/moderation'
+      path: '/moderation'
+      fullPath: '/moderation'
+      preLoaderRoute: typeof AuthenticatedModerationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof CollectionsRoute
+    }
+    '/collections/$category': {
+      id: '/collections/$category'
+      path: '/$category'
+      fullPath: '/collections/$category'
+      preLoaderRoute: typeof CollectionsCategoryRouteImport
+      parentRoute: typeof CollectionsRoute
+    }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
+  AuthenticatedModerationRoute: typeof AuthenticatedModerationRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAccountRoute: AuthenticatedAccountRoute,
+  AuthenticatedModerationRoute: AuthenticatedModerationRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface CollectionsRouteChildren {
+  CollectionsCategoryRoute: typeof CollectionsCategoryRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+}
+
+const CollectionsRouteChildren: CollectionsRouteChildren = {
+  CollectionsCategoryRoute: CollectionsCategoryRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+}
+
+const CollectionsRouteWithChildren = CollectionsRoute._addFileChildren(
+  CollectionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  CollectionsRoute: CollectionsRouteWithChildren,
+  ContactRoute: ContactRoute,
+  DeliveryPolicyRoute: DeliveryPolicyRoute,
+  FaqRoute: FaqRoute,
+  HelpRoute: HelpRoute,
+  OrderProcedureRoute: OrderProcedureRoute,
+  OutletRoute: OutletRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ProductCareRoute: ProductCareRoute,
+  RefundInformationRoute: RefundInformationRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  ReturnPolicyRoute: ReturnPolicyRoute,
+  ReviewsRoute: ReviewsRoute,
+  ShippingInformationRoute: ShippingInformationRoute,
+  ShopRoute: ShopRoute,
+  SizeGuideRoute: SizeGuideRoute,
+  StoriesRoute: StoriesRoute,
+  TermsRoute: TermsRoute,
+  TrackingRoute: TrackingRoute,
+  WishlistRoute: WishlistRoute,
+  ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

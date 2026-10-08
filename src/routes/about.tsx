@@ -1,0 +1,6 @@
+import { createFileRoute,Link } from '@tanstack/react-router';
+import { pageHead } from '@/lib/catalog';
+import { BrandIntro,OutletSection,outletImage } from '@/components/mahaa/editorial';
+import { Button } from '@/components/ui/button';
+export const Route=createFileRoute('/about')({head:()=>pageHead('About MAHAA','Discover MAHAA’s modest-fashion collections and the Natore boutique experience.'),component:About});
+function About(){return <main><section className="campaign"><img src={outletImage} alt="Real MAHAA boutique and fashion photography"/><div className="wrap campaign-content"><span className="eyebrow text-primary">OUR WORLD</span><h1 className="page-title">About MAHAA</h1></div></section><BrandIntro/><div className="wrap prose max-w-4xl pb-10"><h2>Your fashion style destination.</h2><p>MAHAA offers modest-fashion collections including gowns, hijabs, abayas and borkhas, niqabs, three piece, premium overcoats and ponchos. Explore online or connect with the outlet at Police Line, Natore Sadar, Natore.</p><p>Our story is told through the real collections, the boutique, and MAHAA’s official social and YouTube presence. No company history or founder claims have been added to this redesign.</p><Button variant="luxury" asChild><Link to="/collections">Explore our collections</Link></Button></div><OutletSection/></main>;}
