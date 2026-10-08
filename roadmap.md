@@ -1,4 +1,11 @@
 # MAHAA redesign
+## Premium web-app upgrade
+- [ ] Resolve preview store-context crash without removing existing functionality
+- [ ] Cinematic autoplay hero, product and editorial sliders
+- [ ] Mobile bottom navigation and expanded drawer
+- [ ] Complete demo account, wishlist, five-step checkout, confirmation and tracking journey
+- [ ] Upgrade registration, cart, product galleries, category filters, help and support
+- [ ] Verify autoplay and complete demo journeys on desktop and mobile
 - [x] Brand assets and luxury homepage
 - [x] Shop, search, filters, product details, cart and wishlist
 - [x] Customer accounts, conceptual checkout and order surfaces
