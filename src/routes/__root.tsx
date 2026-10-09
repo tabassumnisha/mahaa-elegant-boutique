@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { StoreProvider } from '@/components/mahaa/store';
 import { Header,Footer,Support } from '@/components/mahaa/layout';
+import { MobileNav } from '@/components/mahaa/mobile-nav';
 import { Toaster } from 'sonner';
 
 function NotFoundComponent() {
@@ -122,7 +123,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <StoreProvider><Header/><Outlet/><Footer/><Support/><Toaster position="bottom-left"/></StoreProvider>
+      <StoreProvider><Header/><Outlet/><Footer/><Support/><MobileNav/><Toaster position="bottom-left"/></StoreProvider>
     </QueryClientProvider>
   );
 }

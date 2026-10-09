@@ -17,3 +17,7 @@
 - Use the shared StoreProvider for identity transitions and bag state, and the authenticated layout for private pages, to avoid competing auth listeners.
 - Put privileged writes in validated server functions with rate limits; ordinary reads and moderation use RLS-scoped clients to preserve account boundaries.
 - Keep review photos private with owner upload and approved-review read policies; never promote a concept order to a verified purchase.
+
+- Define store context in a separate browser-safe module and re-export its hook from the provider module to keep one context identity during hot updates.
+- Keep client demo profiles and orders separate from Cloud identities and orders; demo storage must never confer account access or verified-purchase status.
+- Use a shared Embla slider for autoplay, drag, pagination, hover pause and reduced-motion handling so every collection follows one interaction model.
