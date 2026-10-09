@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BestSellersRouteImport } from './routes/best-sellers'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionsRouteImport } from './routes/collections'
@@ -21,6 +22,7 @@ import { Route as DeliveryPolicyRouteImport } from './routes/delivery-policy'
 import { Route as DemoAccountRouteImport } from './routes/demo-account'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HelpRouteImport } from './routes/help'
+import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as OrderProcedureRouteImport } from './routes/order-procedure'
 import { Route as OutletRouteImport } from './routes/outlet'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -61,6 +63,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BestSellersRoute = BestSellersRouteImport.update({
+  id: '/best-sellers',
+  path: '/best-sellers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
@@ -99,6 +106,11 @@ const FaqRoute = FaqRouteImport.update({
 const HelpRoute = HelpRouteImport.update({
   id: '/help',
   path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewArrivalsRoute = NewArrivalsRouteImport.update({
+  id: '/new-arrivals',
+  path: '/new-arrivals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrderProcedureRoute = OrderProcedureRouteImport.update({
@@ -206,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
@@ -214,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/order-procedure': typeof OrderProcedureRoute
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -239,6 +253,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
@@ -246,6 +261,7 @@ export interface FileRoutesByTo {
   '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/order-procedure': typeof OrderProcedureRoute
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -273,6 +289,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
@@ -281,6 +298,7 @@ export interface FileRoutesById {
   '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/order-procedure': typeof OrderProcedureRoute
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -308,6 +326,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/collections'
@@ -316,6 +335,7 @@ export interface FileRouteTypes {
     | '/demo-account'
     | '/faq'
     | '/help'
+    | '/new-arrivals'
     | '/order-procedure'
     | '/outlet'
     | '/privacy-policy'
@@ -341,6 +361,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/contact'
@@ -348,6 +369,7 @@ export interface FileRouteTypes {
     | '/demo-account'
     | '/faq'
     | '/help'
+    | '/new-arrivals'
     | '/order-procedure'
     | '/outlet'
     | '/privacy-policy'
@@ -374,6 +396,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/auth'
+    | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/collections'
@@ -382,6 +405,7 @@ export interface FileRouteTypes {
     | '/demo-account'
     | '/faq'
     | '/help'
+    | '/new-arrivals'
     | '/order-procedure'
     | '/outlet'
     | '/privacy-policy'
@@ -409,6 +433,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  BestSellersRoute: typeof BestSellersRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   CollectionsRoute: typeof CollectionsRouteWithChildren
@@ -417,6 +442,7 @@ export interface RootRouteChildren {
   DemoAccountRoute: typeof DemoAccountRoute
   FaqRoute: typeof FaqRoute
   HelpRoute: typeof HelpRoute
+  NewArrivalsRoute: typeof NewArrivalsRoute
   OrderProcedureRoute: typeof OrderProcedureRoute
   OutletRoute: typeof OutletRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -463,6 +489,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/best-sellers': {
+      id: '/best-sellers'
+      path: '/best-sellers'
+      fullPath: '/best-sellers'
+      preLoaderRoute: typeof BestSellersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -519,6 +552,13 @@ declare module '@tanstack/react-router' {
       path: '/help'
       fullPath: '/help'
       preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-arrivals': {
+      id: '/new-arrivals'
+      path: '/new-arrivals'
+      fullPath: '/new-arrivals'
+      preLoaderRoute: typeof NewArrivalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/order-procedure': {
@@ -696,6 +736,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  BestSellersRoute: BestSellersRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   CollectionsRoute: CollectionsRouteWithChildren,
@@ -704,6 +745,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoAccountRoute: DemoAccountRoute,
   FaqRoute: FaqRoute,
   HelpRoute: HelpRoute,
+  NewArrivalsRoute: NewArrivalsRoute,
   OrderProcedureRoute: OrderProcedureRoute,
   OutletRoute: OutletRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
