@@ -18,6 +18,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeliveryPolicyRouteImport } from './routes/delivery-policy'
+import { Route as DemoAccountRouteImport } from './routes/demo-account'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as OrderProcedureRouteImport } from './routes/order-procedure'
@@ -83,6 +84,11 @@ const ContactRoute = ContactRouteImport.update({
 const DeliveryPolicyRoute = DeliveryPolicyRouteImport.update({
   id: '/delivery-policy',
   path: '/delivery-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoAccountRoute = DemoAccountRouteImport.update({
+  id: '/demo-account',
+  path: '/demo-account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -205,6 +211,7 @@ export interface FileRoutesByFullPath {
   '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/delivery-policy': typeof DeliveryPolicyRoute
+  '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
   '/order-procedure': typeof OrderProcedureRoute
@@ -236,6 +243,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/delivery-policy': typeof DeliveryPolicyRoute
+  '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
   '/order-procedure': typeof OrderProcedureRoute
@@ -270,6 +278,7 @@ export interface FileRoutesById {
   '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/delivery-policy': typeof DeliveryPolicyRoute
+  '/demo-account': typeof DemoAccountRoute
   '/faq': typeof FaqRoute
   '/help': typeof HelpRoute
   '/order-procedure': typeof OrderProcedureRoute
@@ -304,6 +313,7 @@ export interface FileRouteTypes {
     | '/collections'
     | '/contact'
     | '/delivery-policy'
+    | '/demo-account'
     | '/faq'
     | '/help'
     | '/order-procedure'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/delivery-policy'
+    | '/demo-account'
     | '/faq'
     | '/help'
     | '/order-procedure'
@@ -368,6 +379,7 @@ export interface FileRouteTypes {
     | '/collections'
     | '/contact'
     | '/delivery-policy'
+    | '/demo-account'
     | '/faq'
     | '/help'
     | '/order-procedure'
@@ -402,6 +414,7 @@ export interface RootRouteChildren {
   CollectionsRoute: typeof CollectionsRouteWithChildren
   ContactRoute: typeof ContactRoute
   DeliveryPolicyRoute: typeof DeliveryPolicyRoute
+  DemoAccountRoute: typeof DemoAccountRoute
   FaqRoute: typeof FaqRoute
   HelpRoute: typeof HelpRoute
   OrderProcedureRoute: typeof OrderProcedureRoute
@@ -485,6 +498,13 @@ declare module '@tanstack/react-router' {
       path: '/delivery-policy'
       fullPath: '/delivery-policy'
       preLoaderRoute: typeof DeliveryPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo-account': {
+      id: '/demo-account'
+      path: '/demo-account'
+      fullPath: '/demo-account'
+      preLoaderRoute: typeof DemoAccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -681,6 +701,7 @@ const rootRouteChildren: RootRouteChildren = {
   CollectionsRoute: CollectionsRouteWithChildren,
   ContactRoute: ContactRoute,
   DeliveryPolicyRoute: DeliveryPolicyRoute,
+  DemoAccountRoute: DemoAccountRoute,
   FaqRoute: FaqRoute,
   HelpRoute: HelpRoute,
   OrderProcedureRoute: OrderProcedureRoute,
