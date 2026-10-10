@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-export function LuxurySlider({children,label,kind='products',interval=4500}:{children:ReactNode[];label:string;kind?:'products'|'hero'|'editorial';interval?:number}){
+export function LuxurySlider({children,label,kind='products',interval=4500}:{children:ReactNode[];label:string;kind?:'products'|'hero'|'editorial'|'stories';interval?:number}){
  const [reduced,setReduced]=useState(false);const [selected,setSelected]=useState(0);const [snaps,setSnaps]=useState<number[]>([]);
  const [ref,api]=useEmblaCarousel({loop:true,align:'start',slidesToScroll:1},[Autoplay({delay:interval,stopOnInteraction:false,stopOnMouseEnter:true,stopOnFocusIn:true})]);
  useEffect(()=>{const m=window.matchMedia('(prefers-reduced-motion: reduce)');setReduced(m.matches);const update=()=>setReduced(m.matches);m.addEventListener('change',update);return()=>m.removeEventListener('change',update);},[]);
