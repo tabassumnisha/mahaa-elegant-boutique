@@ -14,4 +14,8 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  it.each(['/shop','/collections','/collections/gown','/product/bella-gown-black','/cart','/checkout','/tracking','/demo-account','/auth','/wishlist','/help','/new-arrivals','/best-sellers','/stories','/outlet','/reviews'])('preserves the shopping journey at %s', (path) => {
+    const router=createRouter({routeTree,context:{queryClient:new QueryClient()}});
+    expect(router.matchRoutes(path).at(-1)?.routeId).not.toBe(rootRouteId);
+  });
 });
