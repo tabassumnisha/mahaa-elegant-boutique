@@ -14,3 +14,8 @@
 - [x] Desktop/mobile, 26 public pages, guest bag persistence and enquiry storage verification
 - [ ] Signed-in account, order and review verification — not part of demo verification; requires a confirmed real customer session. Email confirmation remains required.
 - [ ] Live payments, inventory and fulfilment — awaiting MAHAA's production service details; checkout explicitly remains conceptual.
+## Feature-only additions — preserve all existing styling
+- [ ] Verify cart drawer, account forms, name search, categories and tracking
+- [ ] Add Dhaka delivery selections and bKash/Nagad/COD demo confirmation
+- [ ] Add blog, product-video page, review preview, WhatsApp and footer links
+- [ ] Correct shared contact email and test added flows
