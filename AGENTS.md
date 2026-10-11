@@ -24,3 +24,4 @@
 
 - Keep delivery selections and demo payment choices in shared browser-safe data; never invent unconfirmed regional charges.
 - Keep style articles in a shared editorial module with dedicated index/detail routes; general styling advice must not assert unverified product specifications.
+- Validate local demo checkout details with a shared schema before storing orders; local confirmation never initiates a production purchase.
