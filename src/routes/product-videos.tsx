@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { StoriesSection } from '@/components/mahaa/editorial';
+import { business, pageHead } from '@/lib/catalog';
+export const Route=createFileRoute('/product-videos')({head:()=>pageHead('Product Videos & Reels','Watch official MAHAA product stories and explore videos and short reels from the official channel.'),component:Videos});
+function Videos(){return <main><div className="wrap page-top"><span className="eyebrow">MAHAA IN MOTION</span><h1 className="page-title">Product Videos & Reels</h1></div><StoriesSection/><section className="wrap section"><div className="section-head"><h2 className="section-title">From the official channel</h2><a href={business.youtube+'/shorts'} target="_blank" rel="noreferrer" className="text-link">Watch Shorts ↗</a></div><div className="video-feature"><iframe title="Official MAHAA video collection" loading="lazy" src="https://www.youtube-nocookie.com/embed/videoseries?list=UUn_z-CMWLDO-F3VxHRn4afA" allow="encrypted-media; picture-in-picture" allowFullScreen/></div></section></main>;}

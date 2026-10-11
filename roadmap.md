@@ -14,3 +14,10 @@
 - [x] Desktop/mobile, 26 public pages, guest bag persistence and enquiry storage verification
 - [ ] Signed-in account, order and review verification — not part of demo verification; requires a confirmed real customer session. Email confirmation remains required.
 - [ ] Live payments, inventory and fulfilment — awaiting MAHAA's production service details; checkout explicitly remains conceptual.
+## Feature-only additions — preserve all existing styling
+- [x] Verify cart drawer, account forms, name search, categories and tracking
+- [x] Add Dhaka delivery selections and bKash/Nagad/COD demo confirmation
+- [x] Add blog, product-video page, review preview, WhatsApp and footer links
+- [x] Correct shared contact email and test added flows
+
+Dhaka-specific prices were not supplied: both Dhaka options use the existing nationwide ৳150 rate, with Natore preserved at ৳80. Hosted email and Google providers are enabled; no real account exists to test successful login. No approved buyer reviews were invented.

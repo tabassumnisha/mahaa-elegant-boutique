@@ -21,3 +21,7 @@
 - Define store context in a separate browser-safe module and re-export its hook from the provider module to keep one context identity during hot updates.
 - Keep client demo profiles and orders separate from Cloud identities and orders; demo storage must never confer account access or verified-purchase status.
 - Use a shared Embla slider for autoplay, drag, pagination, hover pause and reduced-motion handling so every collection follows one interaction model.
+
+- Keep delivery selections and demo payment choices in shared browser-safe data; never invent unconfirmed regional charges.
+- Keep style articles in a shared editorial module with dedicated index/detail routes; general styling advice must not assert unverified product specifications.
+- Validate local demo checkout details with a shared schema before storing orders; local confirmation never initiates a production purchase.

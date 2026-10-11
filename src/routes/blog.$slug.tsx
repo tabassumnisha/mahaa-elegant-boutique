@@ -1,0 +1,5 @@
+import { createFileRoute, Link, notFound } from '@tanstack/react-router';
+import { articles } from '@/lib/articles';
+import { pageHead, products } from '@/lib/catalog';
+export const Route = createFileRoute('/blog/$slug')({beforeLoad:({params})=>{if(!articles.some(a=>a.slug===params.slug))throw notFound();},head:({params})=>{const a=articles.find(a=>a.slug===params.slug);return pageHead(a?.title??'Article unavailable',a?.intro??'Explore the MAHAA style journal.');},component:Article});
+function Article(){const {slug}=Route.useParams();const article=articles.find(a=>a.slug===slug);if(!article)return null;return <main className="wrap section"><div className="max-w-3xl mx-auto"><Link to="/blog" className="text-link">← Style journal</Link><h1 className="page-title">{article.title}</h1><p className="notice">{article.intro}</p><img className="detail-image mt-8" src={products[article.imageIndex]?.image} alt={article.title}/><div className="prose">{article.paragraphs.map(p=><p className="mt-8" key={p}>{p}</p>)}</div><Link className="text-link mt-8" to="/collections">Explore MAHAA collections ↗</Link></div></main>;}

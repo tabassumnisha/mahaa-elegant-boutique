@@ -1,0 +1,5 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { articles } from '@/lib/articles';
+import { products, pageHead } from '@/lib/catalog';
+export const Route = createFileRoute('/blog/')({head:()=>pageHead('Style Journal','Explore modest-fashion styling, hijab colour ideas and thoughtful shopping advice in the MAHAA style journal.'),component:Blog});
+function Blog(){return <main className="wrap section"><span className="eyebrow">THE STYLE JOURNAL</span><h1 className="page-title">Style, thoughtfully.</h1><div className="review-grid">{articles.map(article=><article key={article.slug} className="story-video-card"><Link to="/blog/$slug" params={{slug:article.slug}}><div className="story-video-photo"><img src={products[article.imageIndex]?.image} alt={article.title} loading="lazy"/></div><h2 className="section-title">{article.title}</h2><p>{article.intro}</p><span className="text-link">Read article ↗</span></Link></article>)}</div></main>;}

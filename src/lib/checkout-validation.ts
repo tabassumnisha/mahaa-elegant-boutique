@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const customerSchema=z.object({name:z.string().trim().min(1,'Enter your name.').max(100),phone:z.string().trim().regex(/^(\+88)?01[3-9][0-9]{8}$/,'Enter a valid Bangladeshi mobile number.'),email:z.union([z.literal(''),z.string().trim().email().max(255)]),street:z.string().trim().min(5,'Enter your complete delivery address.').max(300),city:z.string().trim().min(1,'Enter your city.').max(100)});

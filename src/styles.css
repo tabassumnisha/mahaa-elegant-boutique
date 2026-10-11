@@ -23,3 +23,6 @@
 .section.wrap{padding:90px 64px}.page-top.wrap{padding:60px 64px 35px}.hero:after{background:var(--hero-shade)}@media(max-width:1050px){.section.wrap{padding:70px 35px}.page-top.wrap{padding:50px 35px 30px}}@media(max-width:760px){.section.wrap{padding:55px 22px}.page-top.wrap{padding:40px 22px 20px}.hero:after{background:linear-gradient(0deg,var(--ink),color-mix(in oklab,var(--ink) 72%,transparent) 32%,transparent 75%)}}
 
 .lux-slider-stories .lux-slide{flex-basis:calc((100% - 40px)/3)}@media(max-width:760px){.lux-slider-stories .lux-slide{flex-basis:75%}}
+
+/* Additional contact shortcut; existing support appearance is unchanged. */
+.whatsapp-button{right:85px}@media(max-width:760px){.whatsapp-button{right:77px}}
