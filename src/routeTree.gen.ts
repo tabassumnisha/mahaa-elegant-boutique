@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BestSellersRouteImport } from './routes/best-sellers'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionsRouteImport } from './routes/collections'
@@ -27,6 +28,7 @@ import { Route as OrderProcedureRouteImport } from './routes/order-procedure'
 import { Route as OutletRouteImport } from './routes/outlet'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProductCareRouteImport } from './routes/product-care'
+import { Route as ProductVideosRouteImport } from './routes/product-videos'
 import { Route as RefundInformationRouteImport } from './routes/refund-information'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
@@ -40,6 +42,7 @@ import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as AuthenticatedModerationRouteImport } from './routes/_authenticated/moderation'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
@@ -66,6 +69,11 @@ const AuthRoute = AuthRouteImport.update({
 const BestSellersRoute = BestSellersRouteImport.update({
   id: '/best-sellers',
   path: '/best-sellers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -133,6 +141,11 @@ const ProductCareRoute = ProductCareRouteImport.update({
   path: '/product-care',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductVideosRoute = ProductVideosRouteImport.update({
+  id: '/product-videos',
+  path: '/product-videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RefundInformationRoute = RefundInformationRouteImport.update({
   id: '/refund-information',
   path: '/refund-information',
@@ -198,6 +211,11 @@ const AuthenticatedModerationRoute = AuthenticatedModerationRouteImport.update({
   path: '/moderation',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -219,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/best-sellers': typeof BestSellersRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
@@ -232,6 +251,7 @@ export interface FileRoutesByFullPath {
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/product-care': typeof ProductCareRoute
+  '/product-videos': typeof ProductVideosRoute
   '/refund-information': typeof RefundInformationRoute
   '/reset-password': typeof ResetPasswordRoute
   '/return-policy': typeof ReturnPolicyRoute
@@ -245,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/wishlist': typeof WishlistRoute
   '/account': typeof AuthenticatedAccountRoute
   '/moderation': typeof AuthenticatedModerationRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -254,6 +275,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/best-sellers': typeof BestSellersRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
@@ -266,6 +288,7 @@ export interface FileRoutesByTo {
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/product-care': typeof ProductCareRoute
+  '/product-videos': typeof ProductVideosRoute
   '/refund-information': typeof RefundInformationRoute
   '/reset-password': typeof ResetPasswordRoute
   '/return-policy': typeof ReturnPolicyRoute
@@ -279,6 +302,7 @@ export interface FileRoutesByTo {
   '/wishlist': typeof WishlistRoute
   '/account': typeof AuthenticatedAccountRoute
   '/moderation': typeof AuthenticatedModerationRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections': typeof CollectionsIndexRoute
@@ -290,6 +314,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/best-sellers': typeof BestSellersRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
@@ -303,6 +328,7 @@ export interface FileRoutesById {
   '/outlet': typeof OutletRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/product-care': typeof ProductCareRoute
+  '/product-videos': typeof ProductVideosRoute
   '/refund-information': typeof RefundInformationRoute
   '/reset-password': typeof ResetPasswordRoute
   '/return-policy': typeof ReturnPolicyRoute
@@ -316,6 +342,7 @@ export interface FileRoutesById {
   '/wishlist': typeof WishlistRoute
   '/_authenticated/account': typeof AuthenticatedAccountRoute
   '/_authenticated/moderation': typeof AuthenticatedModerationRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -327,6 +354,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/best-sellers'
+    | '/blog'
     | '/cart'
     | '/checkout'
     | '/collections'
@@ -340,6 +368,7 @@ export interface FileRouteTypes {
     | '/outlet'
     | '/privacy-policy'
     | '/product-care'
+    | '/product-videos'
     | '/refund-information'
     | '/reset-password'
     | '/return-policy'
@@ -353,6 +382,7 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/account'
     | '/moderation'
+    | '/blog/$slug'
     | '/collections/$category'
     | '/product/$slug'
     | '/collections/'
@@ -362,6 +392,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/best-sellers'
+    | '/blog'
     | '/cart'
     | '/checkout'
     | '/contact'
@@ -374,6 +405,7 @@ export interface FileRouteTypes {
     | '/outlet'
     | '/privacy-policy'
     | '/product-care'
+    | '/product-videos'
     | '/refund-information'
     | '/reset-password'
     | '/return-policy'
@@ -387,6 +419,7 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/account'
     | '/moderation'
+    | '/blog/$slug'
     | '/collections/$category'
     | '/product/$slug'
     | '/collections'
@@ -397,6 +430,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/best-sellers'
+    | '/blog'
     | '/cart'
     | '/checkout'
     | '/collections'
@@ -410,6 +444,7 @@ export interface FileRouteTypes {
     | '/outlet'
     | '/privacy-policy'
     | '/product-care'
+    | '/product-videos'
     | '/refund-information'
     | '/reset-password'
     | '/return-policy'
@@ -423,6 +458,7 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/_authenticated/account'
     | '/_authenticated/moderation'
+    | '/blog/$slug'
     | '/collections/$category'
     | '/product/$slug'
     | '/collections/'
@@ -434,6 +470,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BestSellersRoute: typeof BestSellersRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   CollectionsRoute: typeof CollectionsRouteWithChildren
@@ -447,6 +484,7 @@ export interface RootRouteChildren {
   OutletRoute: typeof OutletRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProductCareRoute: typeof ProductCareRoute
+  ProductVideosRoute: typeof ProductVideosRoute
   RefundInformationRoute: typeof RefundInformationRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ReturnPolicyRoute: typeof ReturnPolicyRoute
@@ -496,6 +534,13 @@ declare module '@tanstack/react-router' {
       path: '/best-sellers'
       fullPath: '/best-sellers'
       preLoaderRoute: typeof BestSellersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -589,6 +634,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductCareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product-videos': {
+      id: '/product-videos'
+      path: '/product-videos'
+      fullPath: '/product-videos'
+      preLoaderRoute: typeof ProductVideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/refund-information': {
       id: '/refund-information'
       path: '/refund-information'
@@ -680,6 +732,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedModerationRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/collections/': {
       id: '/collections/'
       path: '/'
@@ -717,6 +776,16 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 interface CollectionsRouteChildren {
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
@@ -737,6 +806,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BestSellersRoute: BestSellersRoute,
+  BlogRoute: BlogRouteWithChildren,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   CollectionsRoute: CollectionsRouteWithChildren,
@@ -750,6 +820,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutletRoute: OutletRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProductCareRoute: ProductCareRoute,
+  ProductVideosRoute: ProductVideosRoute,
   RefundInformationRoute: RefundInformationRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ReturnPolicyRoute: ReturnPolicyRoute,
