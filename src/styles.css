@@ -25,4 +25,4 @@
 .lux-slider-stories .lux-slide{flex-basis:calc((100% - 40px)/3)}@media(max-width:760px){.lux-slider-stories .lux-slide{flex-basis:75%}}
 
 /* Additional contact shortcut; existing support appearance is unchanged. */
-.whatsapp-button{right:85px}@media(max-width:760px){.whatsapp-button{right:77px}}
+.back-link{padding-left:0;margin-bottom:14px;gap:6px;min-height:44px}
