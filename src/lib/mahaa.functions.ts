@@ -35,3 +35,31 @@ export const placeConceptOrder = createServerFn({method:'POST'})
   const {data:order,error}=await supabaseAdmin.from('orders').insert({user_id:context.userId,items,address:data.address,total}).select('id,total,status').single();
   if(error)throw new Error('Your concept order could not be saved.');return order;
  });
+const phoneRe=/^(?:\+88)?01[3-9]\d{8}$/;
+const normPhone=(p:string)=>p.trim().replace(/^\+88/,'');
+export const placeOrder = createServerFn({method:'POST'})
+ .inputValidator((input:unknown)=>z.object({items:z.array(z.object({id:z.string().max(150),quantity:z.number().int().min(1).max(20)})).min(1).max(30),customer:z.object({name:z.string().trim().min(1).max(100),phone:z.string().trim().regex(phoneRe),email:z.union([z.literal(''),z.string().trim().email().max(255)]),street:z.string().trim().min(5).max(300),city:z.string().trim().min(1).max(100)}),area:z.enum(['dhaka','bangladesh','natore']),payment:z.enum(['bkash','nagad','cod'])}).parse(input))
+ .handler(async({data})=>{
+  const {deliveryFor}=await import('./delivery');
+  const items=data.items.map(item=>{const product=products.find(p=>p.id===item.id);if(!product)throw new Error('A product in your bag is no longer available.');return {...item,name:product.name,price:product.price};});
+  const total=items.reduce((s,i)=>s+i.price*i.quantity,0)+deliveryFor(data.area).charge;
+  const phone=normPhone(data.customer.phone);
+  const {supabaseAdmin}=await import('@/integrations/supabase/client.server');
+  const {data:allowed}=await supabaseAdmin.rpc('check_form_limit',{bucket:`order:${phone}`});
+  if(!allowed)throw new Error('Too many orders from this number. Please call MAHAA.');
+  const code=`MAHAA-${Date.now().toString(36).toUpperCase()}${Math.floor(Math.random()*1296).toString(36).toUpperCase().padStart(2,'0')}`;
+  const {data:order,error}=await supabaseAdmin.from('orders').insert({order_code:code,phone,items,address:{...data.customer,phone},total,payment_method:data.payment,delivery_area:data.area,status:'placed'}).select('order_code,total,status,created_at').single();
+  if(error||!order)throw new Error('Your order could not be saved. Please try again.');
+  return order;
+ });
+export const trackOrder = createServerFn({method:'POST'})
+ .inputValidator((input:unknown)=>z.object({code:z.string().trim().min(4).max(40),phone:z.string().trim().regex(phoneRe)}).parse(input))
+ .handler(async({data})=>{
+  const {supabaseAdmin}=await import('@/integrations/supabase/client.server');
+  const phone=normPhone(data.phone);
+  const {data:allowed}=await supabaseAdmin.rpc('check_form_limit',{bucket:`track:${phone}`});
+  if(!allowed)throw new Error('Too many lookups. Please try again later.');
+  const {data:o}=await supabaseAdmin.from('orders').select('order_code,status,total,created_at,items,payment_method').eq('order_code',data.code.toUpperCase()).eq('phone',phone).maybeSingle();
+  if(!o)return null;
+  return {code:o.order_code,status:o.status,total:o.total,date:o.created_at,payment:o.payment_method,items:(o.items as {name:string;quantity:number}[]).map(i=>({name:i.name,quantity:i.quantity}))};
+ });

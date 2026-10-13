@@ -13,7 +13,7 @@
 - Keep verified catalogue references, contact details and policy blocks in shared data modules so the storefront and detail pages use the same source.
 - Use original uploaded logo pixels and asset pointers for brand media so official imagery is replaceable without regenerating artwork.
 - Store signed-in profiles, bags, orders and moderated reviews in Cloud with owner-scoped RLS; guest bags are session-only to avoid pretending they are durable.
-- Keep checkout explicitly conceptual until MAHAA confirms payment, stock and fulfilment integration; server handlers calculate prices from the catalogue.
+- Guest checkout saves orders only through a validated, rate-limited server function that prices from the catalogue; tracking requires order code plus phone so order data never leaks. No online payment is collected until a gateway is connected.
 - Use the shared StoreProvider for identity transitions and bag state, and the authenticated layout for private pages, to avoid competing auth listeners.
 - Put privileged writes in validated server functions with rate limits; ordinary reads and moderation use RLS-scoped clients to preserve account boundaries.
 - Keep review photos private with owner upload and approved-review read policies; never promote a concept order to a verified purchase.
@@ -24,4 +24,3 @@
 
 - Keep delivery selections and demo payment choices in shared browser-safe data; never invent unconfirmed regional charges.
 - Keep style articles in a shared editorial module with dedicated index/detail routes; general styling advice must not assert unverified product specifications.
-- Validate local demo checkout details with a shared schema before storing orders; local confirmation never initiates a production purchase.
