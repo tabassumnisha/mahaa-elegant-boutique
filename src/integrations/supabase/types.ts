@@ -104,29 +104,41 @@ export type Database = {
         Row: {
           address: Json
           created_at: string
+          delivery_area: string | null
           id: string
           items: Json
+          order_code: string | null
+          payment_method: string
+          phone: string | null
           status: string
           total: number
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           address: Json
           created_at?: string
+          delivery_area?: string | null
           id?: string
           items: Json
+          order_code?: string | null
+          payment_method?: string
+          phone?: string | null
           status?: string
           total: number
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           address?: Json
           created_at?: string
+          delivery_area?: string | null
           id?: string
           items?: Json
+          order_code?: string | null
+          payment_method?: string
+          phone?: string | null
           status?: string
           total?: number
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: [
           {

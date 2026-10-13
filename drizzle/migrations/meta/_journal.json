@@ -15,6 +15,13 @@
       "when": 1791479993003,
       "tag": "0001_mahaa_review_photos_and_limits",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791911527235,
+      "tag": "0002_guest_orders_tracking",
+      "breakpoints": true
     }
   ]
 }
