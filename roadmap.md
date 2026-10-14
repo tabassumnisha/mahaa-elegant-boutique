@@ -19,5 +19,8 @@
 - [x] Add Dhaka delivery selections and bKash/Nagad/COD demo confirmation
 - [x] Add blog, product-video page, review preview, WhatsApp and footer links
 - [x] Correct shared contact email and test added flows
+## GitHub
+- [x] Verify the project is pushed — private repository tabassumnisha/mahaa-elegant-boutique, branch main; newest commit a02c177 "Add project README" (05:04 UTC 14 Oct 2026), parent 2a4be13 "Added order tracking & Back btn". Tree 278cb19 matches the preview checkout exactly.
+- [ ] Preview checkout still holds the default template README while GitHub's main has the full project brief; reconcile when the two-way sync refreshes this branch.
 
 Dhaka-specific prices were not supplied: both Dhaka options use the existing nationwide ৳150 rate, with Natore preserved at ৳80. Hosted email and Google providers are enabled; no real account exists to test successful login. No approved buyer reviews were invented.
