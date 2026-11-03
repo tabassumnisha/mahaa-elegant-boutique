@@ -26,3 +26,175 @@
 
 /* Additional contact shortcut; existing support appearance is unchanged. */
 .back-link{padding-left:0;margin-bottom:14px;gap:6px;min-height:44px}
+
+/* ==========================================================================
+   MAHAA professional polish layer
+   Typography, spacing, interaction and responsive refinements.
+   Loaded last so it refines the base styles above without changing content.
+   ========================================================================== */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+@keyframes mahaa-fade{from{opacity:0}to{opacity:1}}
+main{animation:mahaa-fade .6s ease-out}
+h1,h2,h3{line-height:1.12}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline-offset:0}
+
+/* Type scale: readable sizes, refined tracking */
+.eyebrow{font-size:11px;letter-spacing:.22em}
+.section-title{font-size:clamp(34px,4.2vw,54px);line-height:1.1}
+.page-title{font-size:clamp(40px,6vw,68px);line-height:1.05}
+.text-link{font-size:11px;letter-spacing:.16em;transition:gap .3s,border-color .3s,color .3s}
+.text-link:hover{gap:20px;color:var(--gold-muted)}
+.announcement{font-size:11px;letter-spacing:.16em;padding:11px 16px;line-height:1.5}
+
+/* Header & navigation */
+.header{height:92px;box-shadow:0 1px 0 color-mix(in oklab,var(--primary) 18%,transparent),0 12px 30px -20px color-mix(in oklab,var(--ink) 90%,transparent)}
+.brand-logo{width:104px;height:74px}
+.desktop-nav{font-size:11.5px;letter-spacing:.14em;gap:38px}
+.desktop-nav a{position:relative}
+.desktop-nav a:after{content:"";position:absolute;left:0;right:0;bottom:8px;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.desktop-nav a:hover:after,.desktop-nav a:focus-visible:after{transform:scaleX(1)}
+.icon-btn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.icon-btn:hover{color:var(--primary);background:transparent}
+.bag-count{width:17px;height:17px;font-size:10px;font-weight:700;right:2px;top:3px}
+
+/* Hero */
+.hero h1{font-size:clamp(64px,9vw,124px);letter-spacing:.05em;margin:20px 0 10px}
+.hero-tagline{font-size:14px;letter-spacing:.3em;margin-bottom:24px}
+.hero-description{font-size:15px;line-height:1.85;max-width:420px}
+.hero-actions{gap:16px;margin-top:22px;flex-wrap:wrap}
+@media(min-width:761px){.lux-slider-hero .hero{height:clamp(580px,80vh,780px)}}
+.lux-slider-hero .lux-controls button{min-width:44px;min-height:44px}
+
+/* Brand intro & sections */
+.intro h2{font-size:clamp(34px,4vw,52px)}
+.intro p{font-size:15px;line-height:1.95;max-width:620px}
+.section{padding:clamp(60px,8vw,110px) 0}
+.section.wrap{padding-top:clamp(55px,7vw,100px);padding-bottom:clamp(55px,7vw,100px)}
+
+/* Collection cards */
+.collection-card:after{inset:40% 0 0;background:linear-gradient(transparent,color-mix(in oklab,var(--ink) 86%,transparent))}
+.collection-label h3{font-size:clamp(26px,2.2vw,32px);margin-bottom:12px}
+.collection-label span{font-size:11px;letter-spacing:.16em;display:inline-block;border-bottom:1px solid var(--primary);padding-bottom:5px;transition:letter-spacing .35s}
+.collection-card:hover .collection-label span{letter-spacing:.22em}
+
+/* Product cards */
+.product-photo{transition:box-shadow .45s}
+.product-card:hover .product-photo{box-shadow:0 22px 44px -26px color-mix(in oklab,var(--ink) 70%,transparent)}
+.product-status{font-size:10px;letter-spacing:.14em;padding:6px 10px;font-weight:600}
+.product-wish{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center}
+.product-info{padding:18px 0 6px}
+.product-info .eyebrow{font-size:10px;letter-spacing:.18em}
+.product-info h3{font-size:14.5px;line-height:1.5;margin:8px 0 10px;font-weight:500}
+.price{font-size:15px;font-weight:600;color:var(--foreground);letter-spacing:.02em}
+.product-actions button,.product-actions a{height:46px}
+
+/* Campaign, outlet, stories */
+.campaign h2{font-size:clamp(40px,5vw,68px)}
+.outlet-copy p{font-size:15px;line-height:1.95;max-width:460px}
+.contact-line{font-size:14px}
+.stories-side p{font-size:14.5px;line-height:1.9}
+.video-caption{font-size:11px;letter-spacing:.14em}
+.review-empty p,.review-card p{font-size:14px}
+.review-card{transition:box-shadow .35s,transform .35s}
+.review-card:hover{box-shadow:0 18px 40px -28px color-mix(in oklab,var(--ink) 60%,transparent)}
+.story-video-card h3{font-size:clamp(22px,2vw,27px)}
+.story-video-card p{font-size:13.5px}
+
+/* Trust, newsletter */
+.trust-item h3{font-size:12px;letter-spacing:.14em}
+.trust-item p{font-size:13px;line-height:1.8}
+.newsletter h2{font-size:clamp(32px,3.6vw,44px)}
+.newsletter p{font-size:14px}
+.newsletter-form input{font-size:16px}
+
+/* Footer */
+.footer{padding:80px 0 28px}
+.footer-grid{gap:clamp(30px,4vw,64px)}
+.footer h4{font-size:12px;letter-spacing:.2em;margin:12px 0 22px}
+.footer a,.footer p{font-size:13px;line-height:2.4}
+.footer a{transition:color .25s,transform .25s}
+.footer a:hover{transform:translateX(3px)}
+.footer-tagline{font-size:11px;letter-spacing:.22em}
+.footer-bottom{font-size:11px;letter-spacing:.1em;gap:16px;flex-wrap:wrap}
+.footer-bottom a{display:inline;font-size:11px;line-height:1.8}
+
+/* Floating support */
+.support-button{width:56px;height:56px;transition:transform .3s,background .3s}
+.support-button:hover{transform:translateY(-3px);background:var(--secondary)}
+
+/* Panels, forms, notices */
+.panel{padding:clamp(28px,4vw,44px)}
+.field{font-size:13px;letter-spacing:.02em}
+.field input,.field textarea,.field select,.search-input,.select-control{font-size:16px;padding:14px;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus,.field select:focus,.search-input:focus,.select-control:focus{border-color:var(--gold-muted);box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 22%,transparent);outline:none}
+.notice{font-size:13px;line-height:1.85}
+.breadcrumbs{font-size:12px}
+.empty-state h2{font-size:clamp(30px,3.5vw,40px)}
+.empty-state p{font-size:14px;color:var(--muted-foreground)}
+
+/* Product detail, cart, checkout, tracking */
+.detail-copy h1{font-size:clamp(36px,4.2vw,54px)}
+.detail-copy p{font-size:14.5px;line-height:1.95}
+.detail-price{font-size:26px;font-weight:500}
+.detail-info summary{font-size:13px;padding:14px 0}
+.qty{height:44px}
+.qty button{width:44px;height:44px}
+.cart-row h3{font-size:22px}
+.cart-total{font-size:16px}
+.delivery-option{font-size:14px;padding:22px}
+.checkout-steps li{font-size:12px}
+.tracking-timeline li{font-size:14px}
+.support-reply{font-size:14px}
+
+/* Content pages & help */
+.prose h2{font-size:clamp(28px,3vw,36px)}
+.prose p,.prose li{font-size:15px;line-height:1.95}
+.content-sidebar a{font-size:13px;padding:14px 0;transition:color .2s,padding-left .25s}
+.content-sidebar a:hover{color:var(--gold-muted);padding-left:6px}
+.help-item{transition:border-color .3s,box-shadow .3s}
+.help-item:hover{border-color:var(--gold-muted);box-shadow:0 18px 40px -30px color-mix(in oklab,var(--ink) 60%,transparent)}
+.help-item p{font-size:13.5px;line-height:1.85}
+.story-link-row p{font-size:13px}
+
+/* Large desktop */
+@media(min-width:1700px){.wrap{max-width:1600px}body{font-size:16px}}
+
+/* Tablet */
+@media(min-width:761px) and (max-width:1050px){.products-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.desktop-nav{font-size:11px;letter-spacing:.1em;gap:20px}.hero h1{letter-spacing:.03em}}
+@media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-brand{grid-column:1/-1}}
+
+/* Mobile */
+@media(max-width:760px){
+body{font-size:15px}
+.announcement{font-size:10px;letter-spacing:.1em;padding:9px 12px}
+.header{height:76px}
+.brand-logo{width:88px;height:62px}
+.hero h1{font-size:clamp(54px,17vw,76px);letter-spacing:.04em}
+.hero-tagline{font-size:11px;letter-spacing:.24em;margin-bottom:14px}
+.hero-description{font-size:14px;max-width:310px;line-height:1.75}
+.hero-actions{gap:10px}
+.intro h2{font-size:clamp(30px,9vw,38px)}
+.intro p{font-size:14px;line-height:1.85}
+.section-head .text-link{font-size:10px;letter-spacing:.12em}
+.collection-label h3{font-size:30px}
+.collection-label span{font-size:10px}
+.product-info h3{font-size:13px}
+.price{font-size:14px}
+.product-actions{opacity:1;transform:none}
+.product-actions button,.product-actions a{height:42px;font-size:10px;letter-spacing:.08em;padding:6px}
+.product-status{font-size:9px;letter-spacing:.1em}
+.campaign h2{font-size:clamp(36px,11vw,46px)}
+.mobile-bottom-nav a{font-size:10px;letter-spacing:.06em}
+.mobile-bottom-nav{min-height:74px}
+.footer{padding:50px 0 28px}
+.footer a,.footer p{font-size:13.5px}
+.footer-bottom{flex-direction:column;align-items:flex-start}
+.checkout-steps li{font-size:10px}
+.panel{padding:30px 22px}
+.detail-price{font-size:24px}
+.page-title{font-size:clamp(38px,11vw,46px)}
+.content-sidebar a{padding:10px 0}
+.help-item p{font-size:13px}
+}

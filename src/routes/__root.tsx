@@ -19,23 +19,16 @@ import { Toaster } from 'sonner';
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <main className="wrap section empty-state" style={{ minHeight: "55vh" }}>
+      <span className="eyebrow">ERROR 404</span>
+      <h1 className="page-title">Page not found</h1>
+      <p>The page you are looking for does not exist or has been moved.</p>
+      <div className="mt-6">
+        <Link to="/" className="text-link">
+          Return to MAHAA →
+        </Link>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -84,6 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "MAHAA — Your Fashion Style Destination" },
       { name: "description", content: "Elegant modest fashion from MAHAA, Natore, Bangladesh." },
+      { name: "theme-color", content: "#16140f" },
+      { property: "og:site_name", content: "MAHAA" },
+      { property: "og:title", content: "MAHAA — Your Fashion Style Destination" },
+      { property: "og:description", content: "Elegant modest fashion from MAHAA, Natore, Bangladesh." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
