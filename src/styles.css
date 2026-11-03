@@ -198,3 +198,62 @@ body{font-size:15px}
 .content-sidebar a{padding:10px 0}
 .help-item p{font-size:13px}
 }
+
+/* ==========================================================================
+   MAHAA luxury finishing layer
+   Restrained gold detailing, cinematic depth and scroll-in reveals.
+   ========================================================================== */
+html{scrollbar-width:thin;scrollbar-color:var(--gold-muted) transparent}
+.header-brand img{transition:opacity .3s,transform .5s}
+.header-brand:hover img{opacity:.88;transform:scale(1.03)}
+.announcement{border-bottom:1px solid color-mix(in oklab,var(--ink) 25%,transparent);font-weight:600}
+
+/* Hero: cinematic settle, gold rule before the eyebrow, deeper vignette */
+@keyframes mahaa-settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero-photo{animation:mahaa-settle 14s ease-out both;will-change:transform}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:16px}
+.hero .eyebrow:before{content:"";width:42px;height:1px;background:var(--primary)}
+.hero h1{text-shadow:0 2px 40px color-mix(in oklab,var(--ink) 55%,transparent)}
+.hero .hero-actions a,.hero .hero-actions button{min-width:168px}
+
+/* Section headings: fine gold rule */
+.section-head .eyebrow,.stories-side .eyebrow,.outlet-copy .eyebrow{display:inline-flex;align-items:center;gap:14px}
+.section-head .eyebrow:before,.stories-side .eyebrow:before,.outlet-copy .eyebrow:before{content:"";width:30px;height:1px;background:var(--gold-muted)}
+.tiny-line{width:64px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
+
+/* Collection cards: gold inner frame on hover */
+.collection-card:before{content:"";position:absolute;inset:14px;border:1px solid color-mix(in oklab,var(--primary) 75%,transparent);opacity:0;transform:scale(1.03);transition:opacity .5s,transform .6s;z-index:2;pointer-events:none}
+.collection-card:hover:before,.collection-card:focus-visible:before{opacity:1;transform:scale(1)}
+
+/* Product cards: fine inner hairline on the photograph */
+.product-photo:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--ink) 6%,transparent);pointer-events:none}
+
+/* Trust strip: gold-ringed icons */
+.trust-item svg{box-sizing:content-box;width:26px;height:26px;padding:15px;border:1px solid color-mix(in oklab,var(--primary) 55%,transparent);border-radius:50%;color:var(--gold-muted);margin-bottom:20px;transition:background .35s,color .35s}
+.trust-item:hover svg{background:var(--primary);color:var(--ink)}
+
+/* Newsletter and footer: one continuous dark, gold-trimmed finish */
+.newsletter{background:var(--ink);color:var(--ivory);border-top:1px solid color-mix(in oklab,var(--primary) 22%,transparent);padding:clamp(52px,6vw,84px) 0}
+.newsletter .eyebrow{color:var(--primary)}
+.newsletter p{color:color-mix(in oklab,var(--ivory) 66%,transparent)}
+.newsletter-form{border-bottom-color:var(--gold-muted)}
+.newsletter-form input{color:var(--ivory)}
+.newsletter-form input::placeholder{color:color-mix(in oklab,var(--ivory) 45%,transparent)}
+.newsletter-form button{color:var(--primary)}
+.newsletter-form button:hover{background:transparent;color:var(--ivory)}
+.footer{position:relative}
+.footer:before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1240px,88%);height:1px;background:linear-gradient(90deg,transparent,var(--gold-muted),transparent)}
+.footer-logo{opacity:.96}
+
+/* Dark bands: soft vignette for depth */
+.campaign:before,.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,color-mix(in oklab,var(--ink) 55%,transparent),transparent 65%);z-index:1;pointer-events:none}
+
+/* Panels: gold top accent */
+.panel{border-top:2px solid var(--primary)}
+
+/* Scroll-in reveals (progressive enhancement, no JavaScript) */
+@keyframes mahaa-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){
+.section-head,.intro,.outlet-copy,.stories-side,.trust-grid,.newsletter-inner,.page-top{animation:mahaa-rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+}
+@media(prefers-reduced-motion:reduce){.hero-photo{animation:none}}
