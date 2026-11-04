@@ -62,6 +62,12 @@ supabase/             Database migrations
 public/               Static files
 ```
 
+## Deploying on Vercel
+
+1. Sign in at [vercel.com](https://vercel.com) with GitHub, choose **Add New → Project** and import this repository.
+2. Leave the environment variables empty and press **Deploy** (build settings are in `vercel.json`).
+3. Open **Settings → Domains** to rename the free `*.vercel.app` address, or add a custom subdomain such as `demo.yourdomain.com` and create the CNAME record Vercel shows for it.
+
 ## Updating content
 
 Everything the client is likely to change lives in shared data files, so the storefront and detail pages always stay in sync:

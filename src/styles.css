@@ -306,3 +306,9 @@ html{scrollbar-width:thin;scrollbar-color:var(--gold-muted) transparent}
 .duo-copy h3{font-size:clamp(32px,3.6vw,52px);margin:12px 0;color:var(--ivory)}
 .duo-copy p{font-size:15px;line-height:1.8;color:color-mix(in oklab,var(--ivory) 75%,transparent);margin-bottom:22px}
 @media(max-width:760px){.duo{grid-template-columns:1fr;gap:12px}.duo-tile{min-height:420px}}
+
+/* "All collections" tile closing the category mosaic */
+.mosaic-all{background:var(--ink);border:1px solid color-mix(in oklab,var(--primary) 45%,transparent);display:flex;align-items:flex-end;transition:background .4s}
+.mosaic-all:after,.mosaic-all:before{display:none}
+.mosaic-all:hover{background:var(--secondary)}
+.mosaic-all .mosaic-label{position:static;padding:24px}

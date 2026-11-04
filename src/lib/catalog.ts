@@ -4,9 +4,13 @@ export const categories = [{"id": "gown", "name": "Gown", "image": "/__l5e/asset
 export const money = (value:number) => `৳ ${value.toLocaleString("en-BD")}`;
 export const business = {phone:"01345660181",email:"Mahaoutfit@gmail.com",address:"Police Line, Natore Sadar, Natore",facebook:"https://www.facebook.com/profile.php?id=61586071427160",outletFacebook:"https://www.facebook.com/profile.php?id=61592707243988",youtube:"https://youtube.com/@mahaabymustarin"};
 export const pageHead=(title:string,description:string)=>({meta:[{title:`${title} — MAHAA`},{name:"description",content:description},{property:"og:title",content:`${title} — MAHAA`},{property:"og:description",content:description},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]});
-// Brand imagery is stored as /__l5e/... pointers. Resolve them against the asset host so the
-// storefront shows its catalogue on any hosting. Replace with locally stored files when available.
+// Product photography comes straight from MAHAA's own catalogue (each product's `source`),
+// so the storefront does not depend on any editor-hosted files.
+// Categories use the first product photograph of that category; others reuse a catalogue photograph
+// until MAHAA supplies dedicated collection imagery.
+const pool=products.map(p=>p.source).filter(Boolean);
+products.forEach(p=>{p.image=p.source||p.image;});
+categories.forEach((c,i)=>{c.image=products.find(p=>p.category===c.id)?.source||pool[(i*3+1)%pool.length]||c.image;});
+// Temporary: the supplied boutique photograph is still referenced by pointer. Replace with a file in /public.
 export const ASSET_HOST='https://mahaa-elegant-boutique.lovable.app';
 export const abs=(url:string)=>url.startsWith('/__l5e/')?ASSET_HOST+url:url;
-products.forEach(p=>{p.image=abs(p.image);});
-categories.forEach(c=>{c.image=abs(c.image);});
