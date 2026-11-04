@@ -10,7 +10,8 @@ export const pageHead=(title:string,description:string)=>({meta:[{title:`${title
 // until MAHAA supplies dedicated collection imagery.
 const pool=products.map(p=>p.source).filter(Boolean);
 products.forEach(p=>{p.image=p.source||p.image;});
-categories.forEach((c,i)=>{c.image=products.find(p=>p.category===c.id)?.source||pool[(i*3+1)%pool.length]||c.image;});
+const stand:Record<string,string>={'premium-overcoat':'sunflower-embroidered-abaya','premium-poncho':'eliza-abaya-maroon','three-piece':'mona-gown-black'};
+categories.forEach((c,i)=>{c.image=products.find(p=>p.category===c.id)?.source||products.find(p=>p.id===stand[c.id])?.source||pool[i%pool.length]||c.image;});
 // Temporary: the supplied boutique photograph is still referenced by pointer. Replace with a file in /public.
 export const ASSET_HOST='https://mahaa-elegant-boutique.lovable.app';
 export const abs=(url:string)=>url.startsWith('/__l5e/')?ASSET_HOST+url:url;
