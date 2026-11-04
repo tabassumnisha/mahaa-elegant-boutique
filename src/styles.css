@@ -354,3 +354,50 @@ html{scrollbar-width:thin;scrollbar-color:var(--gold-muted) transparent}
 /* Footer wordmark */
 .footer-wordmark{font-family:var(--font-display);font-size:clamp(96px,23vw,360px);line-height:.8;letter-spacing:.06em;text-align:center;color:transparent;-webkit-text-stroke:1px color-mix(in oklab,var(--primary) 36%,transparent);margin:70px 0 6px;user-select:none;overflow:hidden;white-space:nowrap}
 @media(max-width:760px){.campaign{height:520px}.footer-wordmark{margin:44px 0 0;-webkit-text-stroke-width:.8px}}
+
+/* ==========================================================================
+   MAHAA premium experience layer: branded intro, scroll progress, inner pages
+   ========================================================================== */
+/* Branded intro (pure CSS, never blocks clicks, hidden for reduced motion) */
+.splash{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;pointer-events:none;animation:mahaa-splash 2s cubic-bezier(.7,0,.2,1) forwards}
+.splash img{width:clamp(120px,16vw,190px);height:auto;animation:mahaa-splash-logo 1.5s ease-out both}
+.splash span{display:block;width:0;height:1px;background:var(--primary);animation:mahaa-splash-line 1.3s .25s ease-out forwards}
+@keyframes mahaa-splash{0%,70%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@keyframes mahaa-splash-logo{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes mahaa-splash-line{to{width:clamp(90px,14vw,170px)}}
+@media(prefers-reduced-motion:reduce){.splash{display:none}}
+
+/* Gold reading-progress line (modern browsers) */
+.scroll-progress{display:none}
+@supports (animation-timeline:scroll()){
+.scroll-progress{display:block;position:fixed;top:0;left:0;right:0;height:2px;z-index:80;background:var(--primary);transform:scaleX(0);transform-origin:left;pointer-events:none;animation:mahaa-progress linear both;animation-timeline:scroll(root block)}
+@keyframes mahaa-progress{to{transform:scaleX(1)}}
+}
+
+/* Inner pages: gold rule under page titles */
+.page-title{position:relative;padding-bottom:24px;margin-bottom:30px}
+.page-title:after{content:"";position:absolute;left:0;bottom:0;width:64px;height:1px;background:var(--primary)}
+.empty-state .page-title:after{left:50%;transform:translateX(-50%)}
+
+/* Collection tabs: refined square tabs */
+.category-tabs{gap:10px;margin-bottom:34px}
+.category-tabs>*{border-radius:0;height:42px;padding:0 20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;box-shadow:none;transition:background .3s,border-color .3s,color .3s}
+.category-tabs>*:hover{border-color:var(--gold-muted)}
+
+/* Category banners: larger, more editorial */
+.category-banner{height:clamp(260px,34vw,420px)}
+.category-banner h2{font-size:clamp(40px,5vw,72px);left:clamp(22px,3vw,44px);bottom:clamp(20px,3vw,36px)}
+
+/* Product detail: sticky copy column, taller imagery */
+@media(min-width:1051px){.detail-grid{align-items:start}.detail-copy{position:sticky;top:130px}}
+.detail-image.detail-crop{height:clamp(520px,74vh,840px)}
+.gallery-thumbs button{transition:border-color .3s,opacity .3s}
+.gallery-thumbs button:not(.selected){opacity:.7}
+.gallery-thumbs button:hover{opacity:1}
+
+/* Gold call-to-action: gentle lift and glow */
+a.bg-primary,button.bg-primary{transition:transform .3s,box-shadow .3s,background-color .3s}
+a.bg-primary:hover,button.bg-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px color-mix(in oklab,var(--primary) 70%,transparent)}
+
+/* Photography fades in softly as it loads */
+.product-photo img,.mosaic-tile img,.duo-tile img,.collection-card img{animation:mahaa-fade .9s ease-out both}

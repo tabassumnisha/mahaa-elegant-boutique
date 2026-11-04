@@ -16,6 +16,7 @@ import { StoreProvider } from '@/components/mahaa/store';
 import { Header,Footer,Support } from '@/components/mahaa/layout';
 import { MobileNav } from '@/components/mahaa/mobile-nav';
 import { Toaster } from 'sonner';
+import brandLogo from '@/assets/mahaa-logo.png';
 
 function NotFoundComponent() {
   return (
@@ -120,7 +121,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <StoreProvider><Header/><Outlet/><Footer/><Support/><MobileNav/><Toaster position="bottom-left"/></StoreProvider>
+      <StoreProvider><div className="scroll-progress" aria-hidden="true"/><div className="splash" aria-hidden="true"><img src={brandLogo} alt=""/><span/></div><Header/><Outlet/><Footer/><Support/><MobileNav/><Toaster position="bottom-left"/></StoreProvider>
     </QueryClientProvider>
   );
 }
