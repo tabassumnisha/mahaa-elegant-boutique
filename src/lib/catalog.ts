@@ -15,3 +15,12 @@ export const byId=(id:string)=>products.find(p=>p.id===id);
 // Temporary: the supplied boutique photograph is still referenced by pointer. Replace with a file in /public.
 export const ASSET_HOST='https://mahaa-elegant-boutique.lovable.app';
 export const abs=(url:string)=>url.startsWith('/__l5e/')?ASSET_HOST+url:url;
+
+// Colour swatches used by the shop filter. A product matches when its name contains the colour word.
+export const colours:{name:string;hex:string}[]=[
+ {name:'Black',hex:'#16140f'},{name:'White',hex:'#f4f1ea'},{name:'Maroon',hex:'#6b1f2a'},{name:'Navy Blue',hex:'#1f2a4d'},
+ {name:'Olive',hex:'#6b6b3a'},{name:'Brown',hex:'#6a4a35'},{name:'Coffee',hex:'#4b3326'},{name:'Golden',hex:'#c9a45a'},
+ {name:'Pink',hex:'#e6a4b4'},{name:'Purple',hex:'#6a4a8c'},{name:'Ash',hex:'#9a9a9a'},{name:'Gray',hex:'#8a8a8a'},
+ {name:'Skin',hex:'#e2c1a5'},{name:'Onion',hex:'#b05a7a'},{name:'Blue',hex:'#3f6fb0'}
+];
+export const hasColour=(p:Product,c:string)=>p.name.toLowerCase().includes(c.toLowerCase());

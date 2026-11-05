@@ -401,3 +401,15 @@ a.bg-primary:hover,button.bg-primary:hover{transform:translateY(-2px);box-shadow
 
 /* Photography fades in softly as it loads */
 .product-photo img,.mosaic-tile img,.duo-tile img,.collection-card img{animation:mahaa-fade .9s ease-out both}
+
+/* Shop by colour + stock state */
+.colour-filter{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 22px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.colour-filter>span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin-right:6px}
+.swatch{width:26px;height:26px;border-radius:50%;border:1px solid color-mix(in oklab,var(--ink) 25%,transparent);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.swatch:hover{transform:scale(1.15)}
+.swatch.active{box-shadow:0 0 0 2px var(--background),0 0 0 4px var(--primary)}
+.swatch-clear{font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;cursor:pointer;color:var(--gold-muted)}
+.stock-toggle{margin-left:auto;font-size:12px;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.product-status.sold{background:var(--ink);color:var(--background)}
+.product-card:has(.product-status.sold) .product-photo img{opacity:.6;filter:grayscale(.4)}
+@media(max-width:760px){.stock-toggle{margin-left:0;width:100%}}
