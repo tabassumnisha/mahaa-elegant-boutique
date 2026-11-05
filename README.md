@@ -2,7 +2,7 @@
 
 A premium e-commerce storefront for **MAHAA**, a modest-fashion brand based in Natore, Bangladesh. The experience is designed around the brand's real identity: deep black, MAHAA gold and warm ivory, with editorial photography, restrained motion and a refined, trustworthy feel on every screen size.
 
-> Your fashion style destination — gowns, hijabs, abayas & borkhas, niqabs and three-piece collections.
+> Your fashion style destination — gowns, hijabs, abayas & borkhas, niqabs and premium overcoats.
 
 ## Highlights
 
