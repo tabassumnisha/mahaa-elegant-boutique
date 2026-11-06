@@ -511,3 +511,26 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0
  .hero-ctrl{right:16px;bottom:18px}
 }
 @media(prefers-reduced-motion:reduce){.hero-static .hero-frame{transition:none;transform:none}}
+
+/* Framing: keep every model's head and face inside the crop on all devices */
+.mosaic-tile img,.collection-card img,.category-banner img{object-position:center 12%}
+.duo-tile img{object-position:center 10%}
+.duo-tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,color-mix(in oklab,var(--ink) 90%,transparent));pointer-events:none}
+.duo-copy{position:relative;z-index:3;padding:0 28px 30px}
+.duo-copy .eyebrow{color:var(--primary);text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.campaign img{object-position:center 12%}
+.video-feature img,.story-video-photo img{object-position:center 12%}
+.story-video-photo{aspect-ratio:3/4}
+.story-video-photo img{width:100%;height:100%;object-fit:cover}
+.outlet-image,.outlet-image.detail-crop{object-position:center 18%}
+.stories-side .text-link{margin-top:18px}
+.stories-side p{margin-bottom:0}
+.product-photo img{object-position:center 10%}
+@media(max-width:760px){
+ .mosaic{grid-auto-rows:300px}
+ .mosaic-0{grid-row:span 1}
+ .duo{gap:14px}
+ .duo-tile{min-height:460px}
+ .campaign img{object-position:center 8%}
+ .detail-image{object-position:center 10%}
+}
