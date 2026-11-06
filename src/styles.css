@@ -546,3 +546,7 @@ html,body{max-width:100%;overflow-x:clip}
  .mobile-bottom-nav a svg{width:21px;height:21px}
 }
 .footer-wordmark{font-size:clamp(48px,18vw,360px);letter-spacing:.04em;white-space:nowrap;overflow:hidden}
+
+/* Desktop header: visible Sign in label; Track order link */
+.tool-label{display:none}
+@media(min-width:1180px){.account-icon{width:auto!important;padding:0 14px;gap:8px}.tool-label{display:inline;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}.desktop-nav{gap:30px}}
