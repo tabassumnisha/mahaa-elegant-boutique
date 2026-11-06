@@ -534,3 +534,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0
  .campaign img{object-position:center 8%}
  .detail-image{object-position:center 10%}
 }
+
+/* Never let one wide element zoom the phone browser out to a desktop-sized layout */
+html,body{max-width:100%;overflow-x:clip}
+.footer,.footer-wordmark,.hero,.campaign,.dark-band,.statement,.section{max-width:100%}
+.footer-wordmark{overflow:hidden;max-width:100vw}
+.mobile-bottom-nav{display:none}
+@media(max-width:760px){
+ .mobile-bottom-nav{display:grid}
+ .mobile-bottom-nav a{font-size:10px;letter-spacing:.06em}
+ .mobile-bottom-nav a svg{width:21px;height:21px}
+}
+.footer-wordmark{font-size:clamp(48px,18vw,360px);letter-spacing:.04em;white-space:nowrap;overflow:hidden}
