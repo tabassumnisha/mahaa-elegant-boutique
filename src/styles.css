@@ -560,3 +560,13 @@ html,body{max-width:100%;overflow-x:clip}
 /* Product badge: always legible (dark chip, gold text), shown only when it carries information */
 .product-status,.dark-band .product-status{background:var(--ink);color:var(--primary);border:1px solid color-mix(in oklab,var(--primary) 55%,transparent);padding:6px 10px;font-size:9.5px;letter-spacing:.2em;font-weight:600}
 .product-status.sold,.dark-band .product-status.sold{background:var(--ivory);color:var(--ink);border-color:var(--ivory)}
+
+/* Touch devices in "desktop site" / laptop mode still get the bottom shopping bar */
+@media(min-width:761px) and (hover:none) and (pointer:coarse){
+ .mobile-bottom-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;bottom:0;left:0;right:0;z-index:55;min-height:104px;padding:14px 20px calc(12px + env(safe-area-inset-bottom));background:var(--ink);color:var(--ivory);border-top:1px solid var(--gold-muted)}
+ .mobile-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:15px;letter-spacing:.08em;min-width:0}
+ .mobile-bottom-nav a svg{width:30px;height:30px}
+ .mobile-bottom-nav .active,.mobile-bottom-nav .mobile-home{color:var(--primary)}
+ .mobile-bottom-nav .bag-count{right:calc(50% - 26px);top:-6px;width:22px;height:22px;font-size:12px}
+ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+}
