@@ -556,3 +556,7 @@ html,body{max-width:100%;overflow-x:clip}
 .lux-slider-reviews .review-card{height:100%;margin:0}
 @media(max-width:1050px){.lux-slider-reviews .lux-slide{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:760px){.lux-slider-reviews .lux-slide{flex-basis:88%}}
+
+/* Product badge: always legible (dark chip, gold text), shown only when it carries information */
+.product-status,.dark-band .product-status{background:var(--ink);color:var(--primary);border:1px solid color-mix(in oklab,var(--primary) 55%,transparent);padding:6px 10px;font-size:9.5px;letter-spacing:.2em;font-weight:600}
+.product-status.sold,.dark-band .product-status.sold{background:var(--ivory);color:var(--ink);border-color:var(--ivory)}
