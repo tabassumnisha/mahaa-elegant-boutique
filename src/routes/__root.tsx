@@ -84,6 +84,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Elegant modest fashion from MAHAA, Natore, Bangladesh." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://mahaa-elegant-boutique.vercel.app/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "MAHAA — Your Fashion Style Destination" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:title", content: "MAHAA — Your Fashion Style Destination" },
+      { name: "twitter:description", content: "Elegant modest fashion from MAHAA, Natore, Bangladesh." },
+      { name: "twitter:image", content: "https://mahaa-elegant-boutique.vercel.app/og-image.png" },
     ],
     links: [
       {
@@ -91,6 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap' },
