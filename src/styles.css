@@ -550,3 +550,9 @@ html,body{max-width:100%;overflow-x:clip}
 /* Desktop header: visible Sign in label; Track order link */
 .tool-label{display:none}
 @media(min-width:1180px){.account-icon{width:auto!important;padding:0 14px;gap:8px}.tool-label{display:inline;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}.desktop-nav{gap:30px}}
+
+/* Customer reviews: sliding carousel, one after another */
+.lux-slider-reviews .lux-slide{flex:0 0 calc((100% - 40px)/3)}
+.lux-slider-reviews .review-card{height:100%;margin:0}
+@media(max-width:1050px){.lux-slider-reviews .lux-slide{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:760px){.lux-slider-reviews .lux-slide{flex-basis:88%}}
