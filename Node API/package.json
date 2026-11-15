@@ -1,0 +1,16 @@
+{
+  "name": "aurea-atelier-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Aurea Atelier API: dependency-free Node.js server using built-in node:http, node:sqlite and node:crypto.",
+  "license": "SEE LICENSE-NOTE.md",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/api.test.js"
+  }
+}

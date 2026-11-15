@@ -1,95 +1,137 @@
-# MAHAA — Elegant Modest Fashion
+# Aurea Atelier: full-stack fashion store (React + Node + SQLite)
 
-A premium e-commerce storefront for **MAHAA**, a modest-fashion brand based in Natore, Bangladesh. The experience is designed around the brand's real identity: deep black, MAHAA gold and warm ivory, with editorial photography, restrained motion and a refined, trustworthy feel on every screen size.
+A complete online store for a modest-fashion label selling dresses, gowns, abayas, hijabs and coats. Customers browse, register, order and track their orders. The owner signs in to an admin panel to manage products and orders. A real server and database sit behind it, so you can rebrand it and go live.
 
-> Your fashion style destination — gowns, hijabs, abayas & borkhas, niqabs and premium overcoats.
+## Demo logins (demo mode)
 
-## Highlights
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@aurea.demo` | the value of `DEMO_ADMIN_PASSWORD` |
+| Customer | `customer@aurea.demo` | the value of `DEMO_CUSTOMER_PASSWORD` |
 
-- **Cinematic homepage** — autoplay hero, shop-by-collection, new arrivals, best sellers, editorial campaign, outlet experience, MAHAA Stories (YouTube) and social gallery
-- **Complete shopping journey** — product browsing, category filters, search, product detail with gallery, quick view, bag, wishlist, five-step checkout, order confirmation and order tracking
-- **Delivery and payment options** — Natore and nationwide delivery, bKash, Nagad and cash-on-delivery selections (no online payment is collected until a gateway is connected)
-- **Customer accounts** — email sign-in, Google sign-in, profile, wishlist, saved details and order history
-- **Real review system** — customer submissions with star rating, moderation and featured reviews; no fabricated testimonials
-- **Help Center and policies** — order procedure, delivery, returns & exchange, refunds, shipping, privacy, terms, FAQ, size guide and product care
-- **Content** — About MAHAA, outlet page, blog / style journal, product videos and contact page with enquiry form
-- **Fully responsive** — separate layouts for mobile (bottom navigation, sticky actions), tablet, laptop and large desktop
+On the Vercel demo no setup is needed: open the sign-in page and use the logins it shows. Admin panel: `/#/admin`. Customer sign-in: `/#/account/login`. The login pages show these details too while `DEMO_MODE=true`.
 
-## Tech stack
+## 1. What you get
 
-| Area | Technology |
-| --- | --- |
-| Framework | TanStack Start + TanStack Router (React 19, TypeScript) |
-| Styling | Tailwind CSS 4 with a custom MAHAA design layer |
-| UI primitives | Radix UI, Embla Carousel, Lucide icons, Sonner |
-| Data and auth | Supabase (database, authentication, row-level security) |
-| Tooling | Vite, Vitest, ESLint, Prettier |
+**Storefront**
+- Home page with hero, style finder, signature dresses, new arrivals and an occasion-edit banner
+- Shop with category, style, fabric and fit filters, search, sorting and an in-stock toggle
+- Product pages with size (XS to XL), length (petite, regular, tall) and colour options, fabric notes, drape, warmth and structure profile, illustrations and related products
+- Slide-in bag with a free-delivery progress bar, wishlist, checkout with validation, delivery methods (standard or next day), tax, card or cash on delivery
+- Order confirmation page, delivery and contact pages
 
-## Getting started
+**Customer accounts**
+- Register, sign in, sign out
+- "My account" with order history; a customer can only ever see their own orders
 
-Requires Node.js 20+ (or Bun).
+**Admin panel**
+- Overview with revenue, orders, average order value, a 14-day chart, best sellers and low-stock alerts
+- Products: add, edit, delete, stock
+- Orders: filter by status (Processing, Packing, Dispatched, Delivered, Cancelled), open details, change status (cancelling returns stock)
+- Settings and a one-click "Restore demo data" (demo mode only)
 
-```sh
-npm install      # or: bun install
-npm run dev      # start the local development server
-npm run build    # production build
-npm run preview  # preview the production build
-npm run lint     # lint the project
-npm test         # run the test suite
+**Back end**
+- Node.js HTTP API with no npm dependencies (uses built-in `node:http`, `node:sqlite`, `node:crypto`)
+- SQLite database with schema and seed files
+- Server-side authentication, roles, price and stock calculation, validation, rate limiting, CSRF checks, security headers
+- 21 automated API tests
+
+## 2. Tech stack
+
+| Layer | Choice |
+|---|---|
+| UI | React 19.2, plain CSS tokens, Inter font bundled locally |
+| Build | Vite 7 |
+| Server | Node.js 22.13+ built-in `http` (no framework) |
+| Database | SQLite via built-in `node:sqlite` |
+| Auth | Email + password, scrypt hashes, random session tokens stored hashed, HttpOnly SameSite cookie |
+| Tests | `node --test` |
+
+Database tables: `users`, `sessions`, `categories`, `products`, `orders`, `order_items` (see `database/schema.sql`).
+
+## 3. Quick start
+
+Requires Node.js 22.13 or newer.
+
+```bash
+cd "React Web" && npm ci && npm run build && cd ..
+cd "Node API" && npm start          # landing page at http://localhost:3000, the store at /store/, demo data loads on first start
 ```
 
-Copy the Supabase connection details into a `.env` file:
+Docker: `docker compose up -d --build`. Development with hot reload: `npm run dev` in both folders. Tests: `npm test` in `Node API`. Full steps for a VPS and for Docker, database setup, first admin login and branding are in `HowToSetup.md`.
+
+## 4. Configuration
+
+Copy `.env.example` and set the values you need. The most important:
+
+| Variable | Meaning |
+|---|---|
+| `DEMO_MODE` | `true` (demo only) loads sample data and the demo accounts. `false` starts empty and creates one admin from `ADMIN_EMAIL` / `ADMIN_PASSWORD` |
+| `DATABASE_PATH` | Where the SQLite file lives. Put it on a persistent disk or volume |
+| `PORT` | HTTP port, default 3000 |
+| `SESSION_SECRET` | Long random string. Required for signed sessions on serverless hosting (Vercel) |
+| `DEMO_ADMIN_*`, `DEMO_CUSTOMER_*` | Optional overrides of the demo logins (`EMAIL`, `PASSWORD`) |
+| `ALLOW_GUEST_CHECKOUT` | `true` (default) lets visitors order without an account; `false` requires sign-in |
+| `COOKIE_SECURE`, `TRUST_PROXY` | Turn on when running behind HTTPS or a reverse proxy |
+
+Tax rate, shipping prices and the free-shipping threshold are in `Node API/server/config.js`.
+
+## 5. Make it yours
+
+| To change | Edit |
+|---|---|
+| Store name, address, contact details | `React Web/src/config.js` |
+| Tax, shipping prices, free-shipping threshold | `Node API/server/config.js` |
+| Products and sample orders | the admin panel, or `database/seed.sql` for the starting data |
+| Logo and backgrounds | the files in `React Web/src/assets/images/` (same file names; `logo.webp` is a text wordmark you can replace with your own logo; the product artwork is SVG drawn in `src/art.jsx`) |
+| Product photos | `React Web/public/products/`, then set the product's image path in the admin |
+| Colours and typography | design tokens at the top of `React Web/src/styles/tokens.css` |
+
+## 6. Deployment (four routes)
+
+A real store needs a host that can run Node.js and keep a file on disk (routes A to C). Static-only hosts (Netlify, GitHub Pages) cannot run the server. Route D shows the store on Vercel for demonstrations only.
+
+**Route A: Docker on a VPS**
+```bash
+docker compose up -d --build     # http://SERVER_IP:3000, data kept in a Docker volume
+```
+Put HTTPS in front (Caddy, nginx, Traefik or your cloud load balancer) and set `COOKIE_SECURE=true`.
+
+**Route B: Render, Railway, Fly.io or any Node host**
+Build command `cd "React Web" && npm ci && npm run build`, start command `cd "Node API" && npm start`, Node 22.13+, and a persistent disk mounted at the folder of `DATABASE_PATH`. A `render.yaml` blueprint for Render is included. Persistent disks are a paid feature on most hosts.
+
+**Route C: plain VPS without Docker**
+Build `React Web`, then run `npm start` in `Node API` under systemd or pm2 behind a reverse proxy (see `HowToSetup.md`).
+
+**Route D: Vercel (live demo only)**
+Import the repository into Vercel. `vercel.json` and `api/index.mjs` are included: the build runs `npm run build` and the API runs as a serverless function with an in-memory copy of the demo data. Sign-in works across instances through signed cookies. Data you change (new orders, edited products) is temporary and resets when the function restarts, so use this route to show the store, not to run it. Optionally set `SESSION_SECRET` in the Vercel project settings.
+
+Hosting estimate: 1 vCPU and 512 MB RAM is enough.
+
+## 7. Before you take real orders
+
+1. Set `DEMO_MODE=false`, set `ADMIN_EMAIL` and a long `ADMIN_PASSWORD`, and start with an empty database.
+2. Connect a payment provider. The card form only validates format; card details are never stored or sent.
+3. Connect an email service. Order, newsletter and contact messages currently show on-screen confirmations only.
+4. Put the site behind HTTPS and back up the SQLite file.
+5. Review tax and shipping rules for your country.
+
+## 8. Project structure
 
 ```
-VITE_SUPABASE_URL=
-VITE_SUPABASE_PUBLISHABLE_KEY=
-VITE_SUPABASE_PROJECT_ID=
-SUPABASE_URL=
-SUPABASE_PUBLISHABLE_KEY=
+Node API/     package.json, package-lock.json
+  server/     config, db, auth, validation, pricing, http helpers, routes/ (one file per area)
+  tests/      API tests
+React Web/    package.json, package-lock.json, index.html, vite.config.js
+  src/        pages, components, store, API client, styles/ (split by area)
+  public/     favicon and product photos
+database/     schema.sql and seed.sql
+docs/         api.md, erd.md (database diagram), customisation.md
+api/          Vercel demo entry (optional)
 ```
 
-## Project structure
+`CLAUDE.md` explains the codebase for AI coding tools. It was built with Claude Code.
 
-```
-src/
-  components/mahaa/   Storefront components (header, footer, sliders, product cards, checkout)
-  components/ui/      Shared UI primitives
-  lib/                Catalogue, policies, articles, delivery and business data
-  routes/             One file per page
-  assets/             Logo and photography references
-  styles.css          Design tokens and the MAHAA visual layer
-supabase/             Database migrations
-public/               Static files
-```
+## 9. Licence, updates and support
 
-## Deploying on Vercel
-
-1. Sign in at [vercel.com](https://vercel.com) with GitHub, choose **Add New → Project** and import this repository.
-2. Leave the environment variables empty and press **Deploy** (build settings are in `vercel.json`).
-3. Open **Settings → Domains** to rename the free `*.vercel.app` address, or add a custom subdomain such as `demo.yourdomain.com` and create the CNAME record Vercel shows for it.
-
-## Updating content
-
-Everything the client is likely to change lives in shared data files, so the storefront and detail pages always stay in sync:
-
-- **Products and categories** — `src/lib/catalog.ts`
-- **Contact details and social links** — `src/lib/catalog.ts` (`business`)
-- **Policy text** — `src/lib/policies.ts`
-- **Style journal articles** — `src/lib/articles.ts`
-- **Delivery options** — `src/lib/delivery.ts`
-- **Brand imagery** — `src/assets/` (see the README inside for replacing images)
-
-## Production checklist
-
-Before launch, the following need MAHAA's own production details:
-
-- Live payment gateway (bKash / Nagad / card) and inventory connection
-- Final legal text for the policy pages
-- Original high-resolution product and campaign photography
-- Approved customer reviews (reviews are moderated and none are pre-filled)
-
-## Brand assets
-
-The MAHAA logo is used exactly as supplied and must never be redrawn, recoloured or distorted.
-
-© 2026 Mahaa. All rights reserved.
+Licensed under the Standard Licence in `LICENSE-NOTE.md` (one End Product per licence). Open-source notices are in `THIRD_PARTY_NOTICES.md`. See `CHANGELOG.md` for releases. Security and defect fixes are published through Vibe96 for 12 months from each sale, and support tickets are answered within two business days for 30 days.

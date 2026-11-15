@@ -1,0 +1,7 @@
+**/node_modules
+**/dist
+Node API/data
+Node API/tests
+.git
+.env
+docs
